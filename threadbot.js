@@ -5,11 +5,11 @@ const WITTY_RETORTS = [
   `Gosh, this sure is getting to be quite the thread isn't it {NAME}?`,
   `Hmmm, maybe it's time we took this to a room, don't you think {NAME}?`,
   `Ok, no really, here's a Zoom link for you chatterboxes. Especially you, {NAME}!`,
-  `I think the {CHANNEL} channel has had enough of your jibber-jabber {NAME}!`,
+  `I think this channel has had enough of your jibber-jabber {NAME}!`,
 ];
 
 
-exports.readMessage = (message) => {
+exports.respondToMessage = (message) => {
   let response;
   let zoomIt = false;
   if (message.thread_ts) {
@@ -17,7 +17,7 @@ exports.readMessage = (message) => {
     threadCounter[message.thread_ts] = ++count;
 
     if (count && count % THREAD_LENGTH_WARN) {
-      response = pickWittyRetort(message.user, message.channel);
+      response = pickWittyRetort(message.user);
     }
   } 
 
@@ -27,10 +27,8 @@ exports.readMessage = (message) => {
   return response;
 };
 
-
-function pickWittyRetort(name, channel) {
+// yeah, yeah this is duplicated...
+function pickWittyRetort(name) {
   let retort = WITTY_RETORTS[Math.floor(Math.random() * WITTY_RETORTS.length)];
-  retort = retort.replace(`{NAME}`, `<@${name}>`);
-  retort = retort.replace(`{CHANNEL}`, `<@${channel}>`);
-  return retort;
+  return retort.replace(`{NAME}`, `<@${name}>`);
 }

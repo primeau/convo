@@ -5,18 +5,19 @@ const dirtyWords = RegExp(
 
 const MAX_FUCKS_ALLOWED = 3;
 const FUCK_WINDOW = 60;
+const WITTY_RETORTS = [
+  `You're quite the pottymouth, aren't you {NAME}?`,
+  `My EARS {NAME}!`,
+  `Oh My Goodness {NAME}, that's quite enough cursing!`,
+];
 
 let fuckCounter = {};
 
-exports.readMessage = message => {
+exports.respondToMessage = message => {
   let response;
   if (dirtyWords.test(message.text)) {
     // load up the swears
-    let fucksGiven = fuckCounter[message.user];
-    // if they haven't sworn before
-    if (!fucksGiven) {
-      fucksGiven = [];
-    }
+    let fucksGiven = fuckCounter[message.user] || [];
     // add to the swear jar
     fucksGiven.push(message.ts);
     // we only want the most recent swears
@@ -29,10 +30,16 @@ exports.readMessage = message => {
       let oldestFuck = fucksGiven[0];
       // have they been swearing a lot lately?
       if (newestFuck - oldestFuck < FUCK_WINDOW) {
-        response = `You're quite the pottymouth, aren't you <@${message.user}>?`;
+        response = pickWittyRetort(message.user);
       }
     }
     fuckCounter[message.user] = fucksGiven;
   }
   return response;
 };
+
+// yeah, yeah this is duplicated...
+function pickWittyRetort(name) {
+  let retort = WITTY_RETORTS[Math.floor(Math.random() * WITTY_RETORTS.length)];
+  return retort.replace(`{NAME}`, `<@${name}>`);
+}

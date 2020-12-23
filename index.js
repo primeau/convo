@@ -24,10 +24,10 @@ const app = new App({
 app.message(async ({ message, say }) => {
   let response;
   
-  response = swearbot.readMessage(message);
+  response = swearbot.respondToMessage(message);
   sendMessage(response, message.thread_ts, say);
 
-  response = threadbot.readMessage(message);
+  response = threadbot.respondToMessage(message);
   sendMessage(response, message.thread_ts, say);
 });
 
@@ -35,7 +35,7 @@ app.message(async ({ message, say }) => {
 // send a message as the chatbot
 //
 async function sendMessage(text, thread, say) {
-  // console.log(text);
+  console.log(`CONVO: ${text}`);
   if (text) {
     await say({
       text: text,
