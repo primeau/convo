@@ -1,6 +1,6 @@
 const retorts = require("./retorts");
 
-let THREAD_LENGTH_WARN;
+const THREAD_LENGTH_WARN = process.env.THREAD_LENGTH_WARN || 50;
 
 let threadCounter = {};
 
@@ -14,7 +14,7 @@ const WITTY_RETORTS = [
 
 exports.respondToMessage = (message) => {
 
-  THREAD_LENGTH_WARN = process.env.THREAD_LENGTH_WARN || 50;
+  // THREAD_LENGTH_WARN = process.env.THREAD_LENGTH_WARN || 50;
 
   console.log(THREAD_LENGTH_WARN);
 

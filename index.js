@@ -23,7 +23,7 @@ const app = new App({
 //
 app.message(async ({ message, say }) => {
   let response;
-  
+
   response = swearbot.respondToMessage(message);
   sendMessage(response, message.thread_ts, say);
 
@@ -36,7 +36,7 @@ app.message(async ({ message, say }) => {
 //
 async function sendMessage(text, thread, say) {
   if (text) {
-  console.log(`CONVO: ${text}`);
+    console.log(`CONVO: ${text}`);
     await say({
       text: text,
       thread_ts: thread

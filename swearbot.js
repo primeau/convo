@@ -6,7 +6,7 @@ const dirtyWords = RegExp(
 );
 
 const MAX_FUCKS_ALLOWED = 3;
-const FUCK_WINDOW = 60;
+const FUCK_WINDOW = 300;
 const WITTY_RETORTS = [
   `You're quite the pottymouth, aren't you {NAME}?`,
   `My EARS {NAME}!`,
