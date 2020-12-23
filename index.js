@@ -35,8 +35,8 @@ app.message(async ({ message, say }) => {
 // send a message as the chatbot
 //
 async function sendMessage(text, thread, say) {
-  console.log(`CONVO: ${text}`);
   if (text) {
+    console.log(`CONVO: ${text}`);
     await say({
       text: text,
       thread_ts: thread

@@ -1,3 +1,5 @@
+const retorts = require("./retorts");
+
 const THREAD_LENGTH_WARN = 2;
 let threadCounter = {};
 
@@ -17,7 +19,7 @@ exports.respondToMessage = (message) => {
     threadCounter[message.thread_ts] = ++count;
 
     if (count && count % THREAD_LENGTH_WARN) {
-      response = pickWittyRetort(message.user);
+      response = retorts.select(WITTY_RETORTS, message.user);
     }
   } 
 
@@ -26,9 +28,3 @@ exports.respondToMessage = (message) => {
   // }
   return response;
 };
-
-// yeah, yeah this is duplicated...
-function pickWittyRetort(name) {
-  let retort = WITTY_RETORTS[Math.floor(Math.random() * WITTY_RETORTS.length)];
-  return retort.replace(`{NAME}`, `<@${name}>`);
-}

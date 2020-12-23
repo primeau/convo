@@ -1,3 +1,5 @@
+const retorts = require("./retorts");
+
 // see also: https://www.youtube.com/watch?v=kyBH5oNQOS0
 const dirtyWords = RegExp(
   `shit|piss|fuck|cunt|cocksucker|motherfucker|tits|dick|asshole|bitch`
@@ -13,7 +15,7 @@ const WITTY_RETORTS = [
 
 let fuckCounter = {};
 
-exports.respondToMessage = message => {
+exports.respondToMessage = (message) => {
   let response;
   if (dirtyWords.test(message.text)) {
     // load up the swears
@@ -30,16 +32,10 @@ exports.respondToMessage = message => {
       let oldestFuck = fucksGiven[0];
       // have they been swearing a lot lately?
       if (newestFuck - oldestFuck < FUCK_WINDOW) {
-        response = pickWittyRetort(message.user);
+        response = retorts.select(WITTY_RETORTS, message.user);
       }
     }
     fuckCounter[message.user] = fucksGiven;
   }
   return response;
 };
-
-// yeah, yeah this is duplicated...
-function pickWittyRetort(name) {
-  let retort = WITTY_RETORTS[Math.floor(Math.random() * WITTY_RETORTS.length)];
-  return retort.replace(`{NAME}`, `<@${name}>`);
-}
