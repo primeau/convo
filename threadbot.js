@@ -25,7 +25,7 @@ exports.respondToMessage = (message) => {
     let count = threadCounter[message.thread_ts] || 0;
     threadCounter[message.thread_ts] = ++count;
 
-    if (count && count % THREAD_LENGTH_WARN !== 0) {
+    if (count && count % THREAD_LENGTH_WARN === 0) {
       response = retorts.select(WITTY_RETORTS, message.user);
     }
   }
