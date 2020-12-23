@@ -30,7 +30,7 @@ exports.readMessage = (message) => {
 
 function pickWittyRetort(name, channel) {
   let retort = WITTY_RETORTS[Math.floor(Math.random() * WITTY_RETORTS.length)];
-  retort.replace(`{NAME}`, `<@${name}>`);
-  retort.replace(`{CHANNEL}`, `<@${channel}>`);
+  retort = retort.replace(`{NAME}`, `<@${name}>`);
+  retort = retort.replace(`{CHANNEL}`, `<@${channel}>`);
   return retort;
 }
