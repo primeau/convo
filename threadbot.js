@@ -1,6 +1,6 @@
-const THREAD_LENGTH_WARN_1 = 2;
-const THREAD_LENGTH_WARN_2 = 4;
-const THREAD_LENGTH_WARN_3 = 6;
+const THREAD_LENGTH_WARN_1 = 5;
+const THREAD_LENGTH_WARN_2 = 10;
+const THREAD_LENGTH_WARN_3 = 15;
 let threadCounter = {};
 
 exports.readMessage = (message) => {
