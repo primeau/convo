@@ -3,7 +3,7 @@ const THREAD_LENGTH_WARN_2 = 100;
 const THREAD_LENGTH_WARN_3 = 150;
 let threadCounter = {};
 
-export function readMessage(message) {
+exports.readMessage = (message) => {
   let response;
   let zoomIt = false;
   if (message.thread_ts) {
@@ -23,4 +23,4 @@ export function readMessage(message) {
   //   await say(`/zoom`); //TODO
   // }
   return response;
-}
+};

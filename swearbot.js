@@ -8,7 +8,7 @@ const FUCK_WINDOW = 60;
 
 let fuckCounter = {};
 
-export function readMessage(message) {
+exports.readMessage = message => {
   let response;
   if (dirtyWords.test(message.text)) {
     // load up the swears
@@ -35,4 +35,4 @@ export function readMessage(message) {
     fuckCounter[message.user] = fucksGiven;
   }
   return response;
-}
+};
