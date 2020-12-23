@@ -1,6 +1,6 @@
 {
-  "name": "@slack/slack-bolt-sdk-example",
-  "version": "1.0.0",
+  "name": "@slack/bolt",
+  "version": "2.0.0",
   "private": true,
   "description": "Checks for long threads and dirty words",
   "main": "index.js",
