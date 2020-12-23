@@ -1,6 +1,6 @@
 const retorts = require("./retorts");
 
-const THREAD_LENGTH_WARN = 2;
+const THREAD_LENGTH_WARN = process.env.THREAD_LENGTH_WARN || 50;
 let threadCounter = {};
 
 const WITTY_RETORTS = [
@@ -21,7 +21,7 @@ exports.respondToMessage = (message) => {
     if (count && count % THREAD_LENGTH_WARN) {
       response = retorts.select(WITTY_RETORTS, message.user);
     }
-  } 
+  }
 
   //   if (zoomIt) {
   //   await say(`/zoom`); //TODO
