@@ -1,6 +1,6 @@
 {
-  "name": "@slack/bolt",
-  "version": "2.0.0",
+  "name": "@primeau/convo",
+  "version": "1.0.0",
   "private": true,
   "description": "Checks for long threads and dirty words",
   "main": "index.js",
@@ -11,6 +11,6 @@
   "author": "Jason Primeau",
   "license": "MIT",
   "dependencies": {
-    "@slack/bolt": "^1.5.0"
+    "@slack/bolt": "^2.0.0"
   }
 }
